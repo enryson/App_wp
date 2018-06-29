@@ -1,3 +1,21 @@
 page-home {
+	.header-banner{
+		
+		height:200px;
+		min-height:160px;
+	}
 
+	.slide-zoom {
+		// height:200px;
+		height: 100%;
+		// overflow:hidden;
+    }
+
+    ion-slides {
+        height: 160px;
+     }
+     h3{
+         text-align: center;
+     }
+       
 }

@@ -10,6 +10,7 @@ import { NavController, NavParams } from 'ionic-angular';
 export class HomePage {
 
   public items:any=[];
+  public slides:any=[];
   private per_page:number = 8;
   private page:number = 1;
 
@@ -21,6 +22,15 @@ export class HomePage {
       this.category_id = this.NavParams.get('cat_id');
     }
     this.getPosts();
+    this.getSlides();
+  }
+
+  getSlides(){
+    
+      this.api.get('media?categories=80&fields=id,guid').subscribe((data1:any)=>{
+      this.slides =  this.slides.concat(data1);
+      });
+    
   }
 
   getPosts(infinityScroll = null){
