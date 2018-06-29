@@ -24,6 +24,7 @@ export class HomePage {
     this.getPosts();
     this.getSlides();
   }
+  
 
   getSlides(){
     
