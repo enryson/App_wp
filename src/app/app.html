@@ -6,9 +6,14 @@
   </ion-header>
 
   <ion-content>
+      <ion-card >
+          <img src=""/>
+      </ion-card>
     <ion-list>
+      <button menuClose ion-item (click)="openPage(0)">Home</button>
       <button menuClose ion-item (click)="openPage(51)">Mensagem Pastoral</button>
       <button menuClose ion-item (click)="openPage(10)">Escola Sabatina</button>
+      <button menuClose ion-item (click)="openDetail(411)">Boletim</button>
     </ion-list>
   </ion-content>
 
