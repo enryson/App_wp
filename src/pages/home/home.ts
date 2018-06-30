@@ -46,7 +46,6 @@ export class HomePage {
         if(data.length===this.per_page){
           this.page++;
         }
-
         if(infinityScroll!=null){
           infinityScroll.complete();
         }
