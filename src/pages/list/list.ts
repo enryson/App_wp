@@ -15,7 +15,7 @@ export class ListPage {
     this.api.get('pages/'+this.p).subscribe((datap:any)=>{
 
       this.pag =  this.pag.concat(datap);      
-      console.log(datap);
+      //console.log(datap);
     });    
   }
   ionViewDidLoad() {
