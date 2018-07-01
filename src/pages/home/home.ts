@@ -27,29 +27,35 @@ export class HomePage {
   
 
   getSlides(){
-    
+      this.slides = [];
       this.api.get('media?categories=80&fields=id,guid').subscribe((data1:any)=>{
       this.slides =  this.slides.concat(data1);
       });
     
   }
+  
 
   getPosts(infinityScroll = null){
     if(!this.isLoading){
       this.isLoading = true;
-      if(infinityScroll!=null && infinityScroll.ionRefresh){
+      if(infinityScroll != null && infinityScroll.ionRefresh){
+        
         this.page = 1;
       }
-      this.api.get('posts?_embed&per_page='+this.per_page+'&page='+this.page+(this.category_id!=0?'&categories='+this.category_id:'')).subscribe((data:any)=>{
+      let url:string = 'posts?_embed&per_page=' + this.per_page + '&page=' + this.page;
+      url += this.category_id != 0 ?'&categories=' + this.category_id:'';
+      this.api.get(url).subscribe((dat:any) => {
         this.isLoading = false;
-        this.items = infinityScroll!=null && infinityScroll.ionRefresh ? data: this.items.concat(data);
-        if(data.length===this.per_page){
+        this.items = infinityScroll != null && infinityScroll.ionRefresh ? dat: this.items.concat(dat);
+        if(dat.length === this.per_page){
           this.page++;
         }
         if(infinityScroll!=null){
-          infinityScroll.complete();
+          
+          infinityScroll.complete();      
+          this.getSlides();    
         }
-      },(error)=>{
+      }, (error)=>{
         this.isLoading = false;
         if(infinityScroll!=null){
           infinityScroll.complete();
