@@ -8,12 +8,12 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ListPage {  
 
-  public page1 : any = [];
+  public pag : any = [];
   constructor(public navCtrl: NavController,public api:ApiProvider) {
 
     this.api.get('pages/441').subscribe((datap:any)=>{
 
-      this.page1 =  this.page1.concat(datap);      
+      this.pag =  this.pag.concat(datap);      
       console.log(datap);
     });    
   }

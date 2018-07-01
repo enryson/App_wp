@@ -7,15 +7,17 @@
 </ion-header>
 
 <ion-content padding>
-  <div >
-      <h2>{{page1.title.rendered}}</h2>
+  <div *ngFor="let p of pag">
+    <div>
+      <h2>{{p.title.rendered}}</h2>
       
-      <ion-row>          
-          <ion-badge color="secondary">    
-          </ion-badge>
+      <ion-row>        
           <ion-note>
-            <ion-icon name="time"></ion-icon>
+            <ion-icon color="secondary" name="time"> {{p.date_gmt | date:"dd.MM.yyyy"}}</ion-icon>
           </ion-note>
       </ion-row>
+      <p [innerHTML]="p.content.rendered">          
+        </p>
+    </div>
   </div>
 </ion-content>
