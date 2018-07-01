@@ -7,11 +7,12 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'list.html'
 })
 export class ListPage {  
-
+  private p : number = 0;
   public pag : any = [];
-  constructor(public navCtrl: NavController,public api:ApiProvider) {
+  constructor(public navCtrl: NavController,public api:ApiProvider,public navParams: NavParams) {
 
-    this.api.get('pages/441').subscribe((datap:any)=>{
+    this.p = navParams.get('page_id');
+    this.api.get('pages/'+this.p).subscribe((datap:any)=>{
 
       this.pag =  this.pag.concat(datap);      
       console.log(datap);
