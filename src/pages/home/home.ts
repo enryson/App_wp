@@ -21,15 +21,18 @@ export class HomePage {
     if(this.NavParams.get('cat_id')!=null && this.NavParams.get('cat_id')!=undefined){
       this.category_id = this.NavParams.get('cat_id');
     }
-    this.getPosts();
-    this.getSlides();
   }
   
+  ngOnInit(){
+      this.getPosts();
+      this.getSlides();
+    }
 
   getSlides(){
     
       this.api.get('media?categories=80&fields=id,guid').subscribe((data1:any)=>{
-      this.slides =  this.slides.concat(data1);
+      // this.slides =  this.slides.concat(data1);
+      this.slides =  data1;
       });
     
   }
@@ -41,6 +44,7 @@ export class HomePage {
         this.page = 1;
       }
       this.api.get('posts?_embed&per_page='+this.per_page+'&page='+this.page+(this.category_id!=0?'&categories='+this.category_id:'')).subscribe((data:any)=>{
+        console.log(data);
         this.isLoading = false;
         this.items = infinityScroll!=null && infinityScroll.ionRefresh ? data: this.items.concat(data);
         if(data.length===this.per_page){
