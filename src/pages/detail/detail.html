@@ -3,20 +3,19 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{api.getCatName(post.categories[0])}}</ion-title>
+    <ion-title>{{api.getCatName(selectedItem.categories[0])}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>  
   <div >
-      <h2>{{post.title.rendered}}</h2>
+      <h2>{{selectedItem.title.rendered}}</h2>
       
       <ion-row>
           <ion-note>
-            <ion-icon color="secondary" name="time"> {{post.date_gmt | date:"dd.MM.yyyy"}}</ion-icon>
+            <ion-icon color="secondary" name="time"> {{selectedItem.date_gmt | date:"dd.MM.yyyy"}}</ion-icon>
           </ion-note>
       </ion-row>
-      <p [innerHTML]="post.content.rendered">          
-        </p>
+      <div *ngIf="post" [innerHTML]="post"></div>
   </div>
 </ion-content>

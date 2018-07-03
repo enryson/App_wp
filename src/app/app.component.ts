@@ -23,14 +23,6 @@ export class MyApp {
               public api:ApiProvider) {
     this.initializeApp();
     
-    // used for an example of ngFor and navigation
-    /*this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
-    ];*/
-
-
-
   }
 
   initializeApp() {
@@ -43,7 +35,7 @@ export class MyApp {
     });
   }
 
-  openPost(cat_id:number = 0) {
+  openPost(cat_id:number = 1) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(HomePage, {cat_id:cat_id});

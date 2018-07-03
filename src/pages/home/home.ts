@@ -11,9 +11,8 @@ export class HomePage {
 
   public items:any=[];
   public slides:any=[];
-  private per_page:number = 8;
+  private per_page:number = 3;
   private page:number = 1;
-
   private isLoading:boolean = false;
   private category_id:number = 0;
 
@@ -23,37 +22,35 @@ export class HomePage {
     }
     this.getPosts();
     this.getSlides();
-  }
-  
+  }  
 
   getSlides(){
       this.slides = [];
       this.api.get('media?categories=80&fields=id,guid').subscribe((data1:any)=>{
       this.slides =  this.slides.concat(data1);
       });
-    
   }
-  
 
   getPosts(infinityScroll = null){
+    console.log("to aqui ");
     if(!this.isLoading){
       this.isLoading = true;
       if(infinityScroll != null && infinityScroll.ionRefresh){
-        
         this.page = 1;
       }
       let url:string = 'posts?_embed&per_page=' + this.per_page + '&page=' + this.page;
       url += this.category_id != 0 ?'&categories=' + this.category_id:'';
-      this.api.get(url).subscribe((dat:any) => {
+      this.api.get(url)
+      .subscribe((dat:any) => {
         this.isLoading = false;
         this.items = infinityScroll != null && infinityScroll.ionRefresh ? dat: this.items.concat(dat);
         if(dat.length === this.per_page){
           this.page++;
         }
+
         if(infinityScroll!=null){
-          
-          infinityScroll.complete();      
-          this.getSlides();    
+          this.getSlides();
+          infinityScroll.complete();
         }
       }, (error)=>{
         this.isLoading = false;
