@@ -24,9 +24,10 @@ export class MyApp {
     this.initializeApp();
     
   }
+  
 
   initializeApp() {
-    this.platform.ready().then(() => {
+    this.platform.ready().then(() => {     
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.api.getCategories();
@@ -40,7 +41,7 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(HomePage, {cat_id:cat_id});
   }
-  openPage(page_id:number = 0) {
+  openPage(page_id:number) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.push(ListPage,{page_id:page_id});

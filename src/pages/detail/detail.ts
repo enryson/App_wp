@@ -18,6 +18,7 @@ export class DetailPage {
     
     if( this.selectedItem.content.rendered ) {
       this.post = this.sanitizer.bypassSecurityTrustHtml( this.selectedItem.content.rendered );
+      
     }
   }
 

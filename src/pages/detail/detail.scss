@@ -1,15 +1,2 @@
 page-detail {
-    div.videoWrapper {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 */
-        padding-top: 25px;
-        height: 0;
-    }
-    div.videoWrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 30%;
-        height: 30%;
-    }
 }

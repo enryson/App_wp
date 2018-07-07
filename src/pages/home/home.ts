@@ -3,6 +3,7 @@ import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -20,30 +21,40 @@ export class HomePage {
     if(this.NavParams.get('cat_id')!=null && this.NavParams.get('cat_id')!=undefined){
       this.category_id = this.NavParams.get('cat_id');
     }
+    
     this.getPosts();
     this.getSlides();
-  }  
+  }
 
   getSlides(){
-      this.slides = [];
-      this.api.get('media?categories=80&fields=id,guid').subscribe((data1:any)=>{
-      this.slides =  this.slides.concat(data1);
-      });
+    this.slides = [];
+    this.api.get('media?categories=80&fields=id,guid').subscribe((data)=>{
+      this.slides =  this.slides.concat(data);
+    });
   }
 
   getPosts(infinityScroll = null){
-    console.log("to aqui ");
+    this.api.get('posts?_embed&per_page=' + this.per_page + '&page=1');
     if(!this.isLoading){
       this.isLoading = true;
       if(infinityScroll != null && infinityScroll.ionRefresh){
         this.page = 1;
       }
+
       let url:string = 'posts?_embed&per_page=' + this.per_page + '&page=' + this.page;
       url += this.category_id != 0 ?'&categories=' + this.category_id:'';
-      this.api.get(url)
-      .subscribe((dat:any) => {
+
+      this.api.get(url).subscribe((dat:any) => {
+        
         this.isLoading = false;
+        if(infinityScroll != null && infinityScroll.ionRefresh){
+          setTimeout(_ => this.items = this.items.concat(dat.items), 10000);
+          this.items = this.items; 
+        }
+        
         this.items = infinityScroll != null && infinityScroll.ionRefresh ? dat: this.items.concat(dat);
+        
+        console.log(dat);
         if(dat.length === this.per_page){
           this.page++;
         }
