@@ -10,16 +10,19 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiProvider {
 
-  private API_URL:string = 'http://igrejaunasp.com/wp-json/wp/v2/';
+  private API_URL:any = 'http://igrejaunasp.com/wp-json/wp/v2/';
   public Categories:any = [];
 
   constructor(public http: HttpClient) {
   }
 
-  get(query:string = ''){
-    return this.http.get(this.API_URL + query);
-  }
+  get(query:string){
 
+    
+    return this.http.get(this.API_URL + query);
+    
+  }
+  
   getCategories(){
     this.get('categories').subscribe((data)=>{
       this.Categories=data;

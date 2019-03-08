@@ -1,23 +1,24 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Igreja UNASP-SP</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
+<ion-content padding>
+  <div *ngFor="let p of pag">
+    <div>
+      <h2>{{p.title.rendered}}</h2>
+      
+      <ion-row>        
+          <ion-note>
+            <!--<ion-icon color="secondary" name="time"> {{p.date_gmt | date:"dd.MM.yyyy"}}</ion-icon>-->
+          </ion-note>
+      </ion-row>
+      <p [innerHTML]="p.content.rendered">          
+        </p>
+    </div>
   </div>
 </ion-content>

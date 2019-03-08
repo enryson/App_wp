@@ -1,23 +1,19 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
 
   <ion-content>
-      <ion-card >
-          <img src=""/>
-      </ion-card>
+          <img src="assets/imgs/app.png"/>
     <ion-list>
-      <button menuClose ion-item (click)="openPage(0)">Home</button>
-      <button menuClose ion-item (click)="openPage(51)">Mensagem Pastoral</button>
-      <button menuClose ion-item (click)="openPage(10)">Escola Sabatina</button>
-      <button menuClose ion-item (click)="openDetail(411)">Boletim</button>
+      <button menuClose ion-item (click)="openPost(0)"><ion-icon name="home"></ion-icon> Home</button>
+      <button menuClose ion-item (click)="openPost(51)"><ion-icon name="mail"></ion-icon> Mensagem Pastoral</button>
+      <button menuClose ion-item (click)="openPost(10)"><ion-icon name="ios-book"></ion-icon> Escola Sabatina</button>
+      <button menuClose ion-item (click)="openPage(441)"><ion-icon name="ios-paper"></ion-icon> Boletim</button>
+      <button menuClose ion-item (click)="openPage(28)"><ion-icon name="alert"></ion-icon> Sobre</button>
+      <button menuClose ion-item (click)="openPage(360)"><ion-icon name="at"></ion-icon> AoVivo</button>
     </ion-list>
   </ion-content>
 
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>
