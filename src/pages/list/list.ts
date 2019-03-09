@@ -1,3 +1,4 @@
+import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -5,33 +6,18 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-list',
   templateUrl: 'list.html'
 })
-export class ListPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+export class ListPage {  
+  private p : number = 0;
+  public pag : any = [];
+  constructor(public navCtrl: NavController,public api:ApiProvider,public navParams: NavParams) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+    this.p = navParams.get('page_id');
+    this.api.get('pages/'+this.p).subscribe((datap:any)=>{
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+      this.pag =  this.pag.concat(datap);      
+      //console.log(datap);
+    });    
   }
-
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
-    });
+  ionViewDidLoad() {
   }
 }

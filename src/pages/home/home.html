@@ -3,12 +3,12 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>IgrejaUNASP</ion-title>
+    <ion-title>Igreja UNASP-SP</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content >
-  <ion-refresher (ionRefresh)="getPosts($event);getSlides();">
+  <ion-refresher (ionRefresh)="getPosts($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   
@@ -21,9 +21,9 @@
 
   <div padding>
     <h3>Ultimos Posts</h3>
-    <ion-card *ngFor="let item of items; index as i" (click)="openDetail(item)">
+    <ion-card *ngFor="let item of items" (click)="openDetail(item)">
       <!--<img src="{{item._embedded['wp:featuredmedia'][0].media_details.sizes.medium.souce_url}"/>-->
-      <ion-card-content index="{i}">
+      <ion-card-content>
         <ion-card-title>
           <h1>{{item.title.rendered}}</h1>
         </ion-card-title>
