@@ -7,24 +7,29 @@ import { Injectable } from '@angular/core';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
+var random = Math.floor(Math.random() * 10000);
+
 @Injectable()
 export class ApiProvider {
 
   private API_URL:any = 'http://igrejaunasp.com/wp-json/wp/v2/';
   public Categories:any = [];
+  
 
   constructor(public http: HttpClient) {
+    
   }
 
   get(query:string){
-
-    
-    return this.http.get(this.API_URL + query);
-    
+    return this.http.get(this.API_URL + query + '&v=' + random);
+  }
+  getPost(query:string){
+    return this.http.get(this.API_URL + query + '?v=' + random);
   }
   
   getCategories(){
-    this.get('categories').subscribe((data)=>{
+    this.getPost('categories').subscribe((data)=>{
       this.Categories=data;
     });
   }

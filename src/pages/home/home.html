@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar color="primary">
+    <ion-title>Igreja UNASP-SP</ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Igreja UNASP-SP</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -30,6 +30,7 @@
         <p [innerHTML]="item.excerpt.rendered">          
         </p>
         <ion-badge color="secondary">
+          <!--<h3>cateroria</h3>-->
           {{getCatName(item.categories[0])}}
         </ion-badge>
         <ion-note>

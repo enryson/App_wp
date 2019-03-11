@@ -19,7 +19,8 @@ ion-header {
   .button-md {
     box-shadow: none;
   }
-
+  
+/*
   .toolbar-title {
     display: -webkit-flex;
     display: flex;
@@ -29,5 +30,10 @@ ion-header {
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
-  }
+  }*/
 }
+.toolbar.no-border, .navbar.no-border{
+  .toolbar-background{
+  border:0;
+  }
+  }
