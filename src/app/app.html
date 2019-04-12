@@ -1,15 +1,18 @@
-<ion-menu [content]="content">
-  
-
+<ion-menu no-border [content]="content" color="primary">
+    <ion-header no-border color="primary">
+        <ion-toolbar no-border color="primary">
+            <img src="assets/imgs/app.png"/>
+        </ion-toolbar>
+      </ion-header>  
   <ion-content>
-          <img src="assets/imgs/app.png"/>
+          
     <ion-list>
       <button menuClose ion-item (click)="openPost(0)"><ion-icon name="home"></ion-icon> Home</button>
       <button menuClose ion-item (click)="openPost(51)"><ion-icon name="mail"></ion-icon> Mensagem Pastoral</button>
       <button menuClose ion-item (click)="openPost(10)"><ion-icon name="ios-book"></ion-icon> Escola Sabatina</button>
-      <button menuClose ion-item (click)="openPage(441)"><ion-icon name="ios-paper"></ion-icon> Boletim</button>
-      <button menuClose ion-item (click)="openPage(28)"><ion-icon name="alert"></ion-icon> Sobre</button>
+      <button menuClose ion-item (click)="openPage(441)"><ion-icon name="ios-paper"></ion-icon> Boletim</button>      
       <button menuClose ion-item (click)="openPage(360)"><ion-icon name="at"></ion-icon> AoVivo</button>
+      <button menuClose ion-item (click)="openPage(28)"><ion-icon name="alert"></ion-icon> Sobre</button>
     </ion-list>
   </ion-content>
 

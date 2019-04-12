@@ -12,7 +12,7 @@ export class ListPage {
   constructor(public navCtrl: NavController,public api:ApiProvider,public navParams: NavParams) {
 
     this.p = navParams.get('page_id');
-    this.api.get('pages/'+this.p).subscribe((datap:any)=>{
+    this.api.getPost('pages/'+this.p).subscribe((datap:any)=>{
 
       this.pag =  this.pag.concat(datap);      
       //console.log(datap);
